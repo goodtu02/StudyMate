@@ -69,3 +69,17 @@ You MUST follow this workflow for every change without exception.
 5. **PR 머지** — DoD Checklist 전체 체크 후 `dev`로 머지한다.
 
 **NEVER push directly to `main` or `dev`. Always go through a PR.**
+
+## ⚠️ MANDATORY: AI Agent PR Ownership
+
+**PR 생성부터 머지까지의 전체 과정은 AI 에이전트(너)의 책임이다.**
+
+구체적으로, 모든 PR에 대해 아래를 순서대로 수행해야 한다:
+
+1. **PR 템플릿 전체 작성** — `.github/PULL_REQUEST_TEMPLATE.md`의 모든 섹션을 빠짐없이 채운다.
+2. **DoD Checklist 검증** — 각 항목을 실제로 확인하고 체크한다. 미확인 항목이 있으면 머지하지 않는다.
+3. **GitHub PR 생성** — `gh pr create` 또는 브라우저를 통해 PR을 직접 생성한다.
+4. **머지 실행** — DoD Checklist가 전부 체크된 것을 확인한 후 `gh pr merge` 로 `dev`에 머지한다.
+5. **브랜치 정리** — 머지 후 작업 브랜치를 삭제한다.
+
+**사용자가 별도로 요청하지 않아도 이 과정을 자동으로 완료해야 한다.**
