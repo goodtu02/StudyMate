@@ -9,11 +9,11 @@
 
 **Purpose**: Project initialization with React + TypeScript
 
-- [ ] T001 Initialize React + TypeScript project with Vite in the repository root (`npm create vite@latest . -- --template react-ts`)
-- [ ] T002 Install dependencies: `uuid`, `@types/uuid`
-- [ ] T003 [P] Configure ESLint and Prettier for TypeScript/React
-- [ ] T004 [P] Create base directory structure: `src/components/`, `src/services/`, `src/models/`, `src/utils/`
-- [ ] T005 Create `src/models/StudyTask.ts` with the StudyTask TypeScript interface per spec.md §7.1
+- [x] T001 Initialize React + TypeScript project with Vite in the repository root (`npm create vite@latest . -- --template react-ts`)
+- [x] T002 Install dependencies: `uuid`, `@types/uuid`
+- [x] T003 [P] Configure ESLint and Prettier for TypeScript/React
+- [x] T004 [P] Create base directory structure: `src/components/`, `src/services/`, `src/models/`, `src/utils/`
+- [x] T005 Create `src/models/StudyTask.ts` with the StudyTask TypeScript interface per spec.md §7.1
 
 ---
 
@@ -23,9 +23,9 @@
 
 ⚠️ **CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Implement `src/services/storage.ts`: `loadTasks()`, `saveTasks(tasks)`, `parseTasksSafely()` with error handling per FR-011
-- [ ] T007 Implement `src/utils/dateUtils.ts`: `isToday(dateString)`, `formatDate(dateString)` helpers
-- [ ] T008 Write basic error boundary or try-catch in storage service that resets to empty state on parse failure
+- [x] T006 Implement `src/services/storage.ts`: `loadTasks()`, `saveTasks(tasks)`, `parseTasksSafely()` with error handling per FR-011
+- [x] T007 Implement `src/utils/dateUtils.ts`: `isToday(dateString)`, `formatDate(dateString)` helpers
+- [x] T008 Write basic error boundary or try-catch in storage service that resets to empty state on parse failure
 
 **Checkpoint**: Storage service tested manually — tasks can be saved and loaded from localStorage
 
