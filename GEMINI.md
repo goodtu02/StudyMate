@@ -78,8 +78,8 @@ You MUST follow this workflow for every change without exception.
 
 1. **PR 템플릿 전체 작성** — `.github/PULL_REQUEST_TEMPLATE.md`의 모든 섹션을 빠짐없이 채운다.
 2. **DoD Checklist 검증** — 각 항목을 실제로 확인하고 체크한다. 미확인 항목이 있으면 머지하지 않는다.
-3. **GitHub PR 생성** — `gh pr create` 또는 브라우저를 통해 PR을 직접 생성한다.
-4. **머지 실행** — DoD Checklist가 전부 체크된 것을 확인한 후 `gh pr merge` 로 `dev`에 머지한다.
+3. **GitHub PR 생성** — `gh pr create` 또는 브라우저를 통해 PR을 직접 생성한다. 생성 시 반드시 적절한 **Assignee**와 **Label**을 지정한다.
+4. **머지 실행** — DoD Checklist가 전부 체크된 것을 확인하고, **Assignee와 Label이 올바르게 지정되었는지 무조건 한 번 더 확인한 후** `gh pr merge` 로 `dev`에 머지한다.
 5. **브랜치 정리** — 머지 후 작업 브랜치를 삭제한다.
 
 **사용자가 별도로 요청하지 않아도 이 과정을 자동으로 완료해야 한다.**
