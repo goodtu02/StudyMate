@@ -10,7 +10,8 @@ Closes #
 
 ## 🌿 Branch
 
-`feature/` → `main`
+<!-- 브랜치명 = Issue 제목과 동일 -->
+`<issue-title-as-branch>` → `dev`
 
 ---
 

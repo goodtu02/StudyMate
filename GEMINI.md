@@ -46,3 +46,26 @@ Template: `.github/PULL_REQUEST_TEMPLATE.md`
 
 Follow spec.md §11.3 format: `type: short summary`
 Valid types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
+
+## ⚠️ MANDATORY: Branch & PR Workflow
+
+You MUST follow this workflow for every change without exception.
+
+### Branch Strategy
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | 최종 안정 코드 (직접 푸시 금지) |
+| `dev` | 개발 통합 브랜치 — 모든 PR의 base 브랜치 |
+| `<issue-title>` | 기능/버그/태스크 작업 브랜치 |
+
+### Mandatory Workflow (순서 엄수)
+
+1. **Issue 먼저 생성** — 작업 전 반드시 GitHub Issue를 올바른 템플릿으로 생성한다.
+2. **브랜치 생성** — 브랜치명은 Issue 제목과 동일하게 한다 (공백 → `-`, 소문자).
+   - 예: Issue 제목 `feat: implement task form` → 브랜치명 `feat/implement-task-form`
+3. **작업 및 커밋** — 해당 브랜치에서 작업하고 `type: short summary` 형식으로 커밋한다.
+4. **PR 생성** — PR 제목은 Issue 제목과 동일하게 한다. base 브랜치는 항상 `dev`.
+5. **PR 머지** — DoD Checklist 전체 체크 후 `dev`로 머지한다.
+
+**NEVER push directly to `main` or `dev`. Always go through a PR.**
