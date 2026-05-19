@@ -39,9 +39,9 @@
 
 ### Implementation
 
-- [ ] T009 [P] [US1] Create `src/components/TaskForm.tsx`: form fields (title*, date*, category, estimatedMinutes, memo) + Save button
-- [ ] T010 [US1] Add form validation in `TaskForm.tsx`: block save when title or date is empty, show error message per FR-009
-- [ ] T011 [US1] Wire `TaskForm` to `storage.ts`: on valid save, call `saveTasks()` and update state in `src/App.tsx`
+- [x] T009 [P] [US1] Create `src/components/TaskForm.tsx`: form fields (title*, date*, category, estimatedMinutes, memo) + Save button
+- [x] T010 [US1] Add form validation in `TaskForm.tsx`: block save when title or date is empty, show error message per FR-009
+- [x] T011 [US1] Wire `TaskForm` to `storage.ts`: on valid save, call `saveTasks()` and update state in `src/App.tsx`
 
 **Checkpoint**: User Story 1 independently functional — TC-001 and TC-002 pass
 
