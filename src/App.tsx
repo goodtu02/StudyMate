@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import { TaskForm } from './components/TaskForm';
+import { TaskCard } from './components/TaskCard';
 import { StudyTask } from './models/StudyTask';
 import { loadTasks, saveTasks } from './services/storage';
 
@@ -32,13 +33,11 @@ function App() {
           {tasks.length === 0 ? (
             <p>No study tasks have been created yet. Add your first study plan for today.</p>
           ) : (
-            <ul>
+            <div>
               {tasks.map((task) => (
-                <li key={task.id}>
-                  <strong>{task.title}</strong> ({task.date}) - {task.isCompleted ? 'Done' : 'Pending'}
-                </li>
+                <TaskCard key={task.id} task={task} />
               ))}
-            </ul>
+            </div>
           )}
         </div>
       </main>
