@@ -5,6 +5,7 @@ import { FilterBar, FilterType } from './components/FilterBar';
 import { TaskList } from './components/TaskList';
 import { StudyTask } from './models/StudyTask';
 import { loadTasks, saveTasks } from './services/storage';
+import { isToday } from './utils/dateUtils';
 
 function App() {
   const [tasks, setTasks] = useState<StudyTask[]>([]);
@@ -21,6 +22,20 @@ function App() {
     saveTasks(updatedTasks);
   };
 
+  const filteredTasks = tasks.filter((task) => {
+    switch (currentFilter) {
+      case 'Today':
+        return isToday(task.date);
+      case 'Completed':
+        return task.isCompleted;
+      case 'Incomplete':
+        return !task.isCompleted;
+      case 'All':
+      default:
+        return true;
+    }
+  });
+
   return (
     <div className="App" style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}>
       <header>
@@ -34,7 +49,7 @@ function App() {
           <h2>Task List Preview</h2>
           <FilterBar currentFilter={currentFilter} onFilterChange={setCurrentFilter} />
           
-          <TaskList tasks={tasks} />
+          <TaskList tasks={filteredTasks} />
         </div>
       </main>
     </div>

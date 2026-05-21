@@ -58,7 +58,7 @@
 - [x] T012 [P] [US2] Create `src/components/TaskCard.tsx`: display task title, date, category, status badge
 - [x] T013 [P] [US2] Create `src/components/FilterBar.tsx`: All / Today / Completed / Incomplete tab buttons
 - [x] T014 [US2] Create `src/components/TaskList.tsx`: renders filtered list of `TaskCard` components; shows empty-state message per FR-008
-- [ ] T015 [US2] Implement filter logic in `TaskList.tsx` or `App.tsx` using `dateUtils.isToday()` for Today filter
+- [x] T015 [US2] Implement filter logic in `TaskList.tsx` or `App.tsx` using `dateUtils.isToday()` for Today filter
 
 **Checkpoint**: User Stories 1 + 2 functional — TC-001, TC-002, TC-003 pass
 
