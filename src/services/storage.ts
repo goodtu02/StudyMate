@@ -28,3 +28,17 @@ export const parseTasksSafely = (data: string | null): StudyTask[] => {
     return [];
   }
 };
+
+export const updateTask = (id: string, changes: Partial<StudyTask>): StudyTask[] => {
+  const tasks = loadTasks();
+  const index = tasks.findIndex(task => task.id === id);
+  if (index !== -1) {
+    tasks[index] = {
+      ...tasks[index],
+      ...changes,
+      updatedAt: new Date().toISOString()
+    };
+    saveTasks(tasks);
+  }
+  return tasks;
+};
