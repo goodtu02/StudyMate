@@ -42,3 +42,10 @@ export const updateTask = (id: string, changes: Partial<StudyTask>): StudyTask[]
   }
   return tasks;
 };
+
+export const deleteTask = (id: string): StudyTask[] => {
+  const tasks = loadTasks();
+  const updatedTasks = tasks.filter(task => task.id !== id);
+  saveTasks(updatedTasks);
+  return updatedTasks;
+};

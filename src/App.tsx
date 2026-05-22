@@ -4,7 +4,7 @@ import { TaskForm } from './components/TaskForm';
 import { FilterBar, FilterType } from './components/FilterBar';
 import { TaskList } from './components/TaskList';
 import { StudyTask } from './models/StudyTask';
-import { loadTasks, saveTasks, updateTask } from './services/storage';
+import { loadTasks, saveTasks, updateTask, deleteTask } from './services/storage';
 import { isToday } from './utils/dateUtils';
 
 function App() {
@@ -24,6 +24,11 @@ function App() {
 
   const handleUpdateTask = (id: string, changes: Partial<StudyTask>) => {
     const updatedTasks = updateTask(id, changes);
+    setTasks(updatedTasks);
+  };
+
+  const handleDeleteTask = (id: string) => {
+    const updatedTasks = deleteTask(id);
     setTasks(updatedTasks);
   };
 
@@ -54,7 +59,7 @@ function App() {
           <h2>Task List Preview</h2>
           <FilterBar currentFilter={currentFilter} onFilterChange={setCurrentFilter} />
           
-          <TaskList tasks={filteredTasks} onUpdateTask={handleUpdateTask} />
+          <TaskList tasks={filteredTasks} onUpdateTask={handleUpdateTask} onDeleteTask={handleDeleteTask} />
         </div>
       </main>
     </div>
