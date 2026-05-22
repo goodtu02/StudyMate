@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { StudyTask } from '../models/StudyTask';
 
 interface TaskFormProps {
   onSave: (task: StudyTask) => void;
+  initialData?: StudyTask;
+  onCancel?: () => void;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ onSave }) => {
-  const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
-  const [category, setCategory] = useState('');
-  const [estimatedMinutes, setEstimatedMinutes] = useState<number | ''>('');
-  const [memo, setMemo] = useState('');
+export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCancel }) => {
+  const [title, setTitle] = useState(initialData?.title || '');
+  const [date, setDate] = useState(initialData?.date || '');
+  const [category, setCategory] = useState(initialData?.category || '');
+  const [estimatedMinutes, setEstimatedMinutes] = useState<number | ''>(initialData?.estimatedMinutes || '');
+  const [memo, setMemo] = useState(initialData?.memo || '');
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setDate(initialData.date);
+      setCategory(initialData.category || '');
+      setEstimatedMinutes(initialData.estimatedMinutes || '');
+      setMemo(initialData.memo || '');
+    }
+  }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,31 +36,33 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave }) => {
     }
 
     const now = new Date().toISOString();
-    const newTask: StudyTask = {
-      id: uuidv4(),
+    const taskData: StudyTask = {
+      id: initialData?.id || uuidv4(),
       title: title.trim(),
       date,
-      isCompleted: false,
+      isCompleted: initialData?.isCompleted || false,
       category: category.trim() || undefined,
       estimatedMinutes: typeof estimatedMinutes === 'number' ? estimatedMinutes : undefined,
       memo: memo.trim() || undefined,
-      createdAt: now,
+      createdAt: initialData?.createdAt || now,
       updatedAt: now,
     };
 
-    onSave(newTask);
+    onSave(taskData);
 
-    // Reset form
-    setTitle('');
-    setDate('');
-    setCategory('');
-    setEstimatedMinutes('');
-    setMemo('');
+    if (!initialData) {
+      // Reset form
+      setTitle('');
+      setDate('');
+      setCategory('');
+      setEstimatedMinutes('');
+      setMemo('');
+    }
   };
 
   return (
     <div className="task-form-container">
-      <h2>Create Study Task</h2>
+      <h2>{initialData ? 'Edit Study Task' : 'Create Study Task'}</h2>
       {error && <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
       <form onSubmit={handleSubmit} className="task-form">
         <div className="form-group" style={{ marginBottom: '1rem' }}>
@@ -104,7 +118,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave }) => {
             style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <button type="submit" className="save-button" style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}>Save Task</button>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <button type="submit" className="save-button" style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}>
+            {initialData ? 'Update Task' : 'Save Task'}
+          </button>
+          {onCancel && (
+            <button type="button" onClick={onCancel} className="cancel-button" style={{ padding: '0.5rem 1rem', cursor: 'pointer', background: '#ccc', color: '#333', border: '1px solid #aaa', borderRadius: '4px' }}>
+              Cancel
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
