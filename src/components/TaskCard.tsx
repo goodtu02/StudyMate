@@ -5,9 +5,10 @@ import { TaskForm } from './TaskForm';
 interface TaskCardProps {
   task: StudyTask;
   onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
+  onDeleteTask?: (id: string) => void;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDeleteTask }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   if (isEditing) {
@@ -53,9 +54,19 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask }) => {
           </span>
           <button 
             onClick={() => setIsEditing(true)}
-            style={{ padding: '0.25rem 0.5rem', cursor: 'pointer', fontSize: '0.8rem' }}
+            style={{ padding: '0.25rem 0.5rem', cursor: 'pointer', fontSize: '0.8rem', marginRight: '0.5rem' }}
           >
             Edit
+          </button>
+          <button 
+            onClick={() => {
+              if (onDeleteTask && window.confirm('Are you sure you want to delete this task?')) {
+                onDeleteTask(task.id);
+              }
+            }}
+            style={{ padding: '0.25rem 0.5rem', cursor: 'pointer', fontSize: '0.8rem', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px' }}
+          >
+            Delete
           </button>
         </div>
       </div>
