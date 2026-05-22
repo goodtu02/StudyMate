@@ -4,9 +4,10 @@ import { TaskForm } from './TaskForm';
 
 interface TaskCardProps {
   task: StudyTask;
+  onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   if (isEditing) {
@@ -15,8 +16,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         <TaskForm 
           initialData={task} 
           onSave={(updatedTask) => {
-            // To be implemented fully in T017/T018
-            console.log('Task saved from inline edit mode:', updatedTask);
+            if (onUpdateTask) {
+              onUpdateTask(task.id, updatedTask);
+            }
             setIsEditing(false);
           }} 
           onCancel={() => setIsEditing(false)} 
