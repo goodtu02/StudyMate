@@ -89,7 +89,7 @@
 ### Implementation
 
 - [x] T019 [US4] Add Delete button to `TaskCard.tsx`
-- [ ] T020 [US4] Implement `deleteTask(id)` in `storage.ts`; wire to `App.tsx` state update
+- [x] T020 [US4] Implement `deleteTask(id)` in `storage.ts`; wire to `App.tsx` state update
 
 **Checkpoint**: TC-008 passes
 
