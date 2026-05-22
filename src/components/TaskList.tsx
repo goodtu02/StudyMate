@@ -4,9 +4,10 @@ import { TaskCard } from './TaskCard';
 
 interface TaskListProps {
   tasks: StudyTask[];
+  onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
 }
 
-export const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
+export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask }) => {
   if (tasks.length === 0) {
     return (
       <div className="empty-state" style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
@@ -18,7 +19,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   return (
     <div className="task-list">
       {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} />
+        <TaskCard key={task.id} task={task} onUpdateTask={onUpdateTask} />
       ))}
     </div>
   );

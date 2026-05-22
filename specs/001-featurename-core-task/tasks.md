@@ -74,7 +74,7 @@
 
 - [x] T016 [US3] Add edit mode toggle to `TaskCard.tsx`: clicking Edit opens `TaskForm.tsx` pre-filled with task data
 - [x] T017 [US3] Implement update logic in `storage.ts`: `updateTask(id, changes)` function; updates `updatedAt` field
-- [ ] T018 [US3] Wire edit save to `App.tsx` state; reflect changes in `TaskList.tsx` immediately
+- [x] T018 [US3] Wire edit save to `App.tsx` state; reflect changes in `TaskList.tsx` immediately
 
 **Checkpoint**: TC-007 passes
 
