@@ -6,9 +6,10 @@ interface TaskCardProps {
   task: StudyTask;
   onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
   onDeleteTask?: (id: string) => void;
+  onToggleTask?: (id: string) => void;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDeleteTask }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDeleteTask, onToggleTask }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   if (isEditing) {
@@ -38,9 +39,21 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
       opacity: task.isCompleted ? 0.6 : 1
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h3 style={{ margin: 0, textDecoration: task.isCompleted ? 'line-through' : 'none' }}>
-          {task.title}
-        </h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <input 
+            type="checkbox" 
+            checked={task.isCompleted} 
+            onChange={() => {
+              if (onToggleTask) {
+                onToggleTask(task.id);
+              }
+            }}
+            style={{ width: '1.2rem', height: '1.2rem', cursor: 'pointer' }}
+          />
+          <h3 style={{ margin: 0, textDecoration: task.isCompleted ? 'line-through' : 'none' }}>
+            {task.title}
+          </h3>
+        </div>
         <div>
           <span className="status-badge" style={{
             padding: '0.25rem 0.5rem',
