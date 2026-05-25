@@ -3,6 +3,7 @@ import './App.css';
 import { TaskForm } from './components/TaskForm';
 import { FilterBar, FilterType } from './components/FilterBar';
 import { TaskList } from './components/TaskList';
+import { SummaryPanel } from './components/SummaryPanel';
 import { StudyTask } from './models/StudyTask';
 import { loadTasks, saveTasks, updateTask, deleteTask } from './services/storage';
 import { isToday } from './utils/dateUtils';
@@ -61,6 +62,8 @@ function App() {
         <p>An AI-Assisted Personal Study Schedule and Reflection Web Application</p>
       </header>
       <main>
+        <SummaryPanel tasks={tasks} />
+        
         <TaskForm onSave={handleSaveTask} />
         
         <div className="task-list-preview" style={{ marginTop: '2rem' }}>

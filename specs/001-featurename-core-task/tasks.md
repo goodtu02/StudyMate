@@ -95,34 +95,34 @@
 
 ---
 
-## Phase 7: User Story 5 — Mark Task as Completed (Priority: P1)
+## Phase 7: User Story 5 — Toggle Task Completion (Priority: P2)
 
-**Goal**: Completion status can be toggled; persists after refresh; completed tasks look different.
+**Goal**: User can click a checkbox to mark a task as completed/incomplete.
 
-**Independent Test**: Create task → toggle complete → verify visual change → refresh → verify status remains.
+**Independent Test**: Click checkbox → task grays out/strikes through → refresh → state preserved.
 
 ### Implementation
 
-- [ ] T021 [US5] Add completion toggle control (checkbox or button) to `TaskCard.tsx`
-- [ ] T022 [US5] Implement `toggleComplete(id)` in `storage.ts`: updates `isCompleted`, `completedAt`, `updatedAt`
-- [ ] T023 [US5] Apply visual distinction (strikethrough, opacity, badge) to completed tasks in `TaskCard.tsx`
+- [x] T021 [US5] Add a checkbox to `TaskCard.tsx` bound to `task.isCompleted`
+- [x] T022 [US5] Wire toggle event to `App.tsx` state update using `updateTask(id, { isCompleted: !current })`
 
-**Checkpoint**: TC-004, TC-005 pass
+**Checkpoint**: TC-009, TC-010 pass
 
 ---
 
-## Phase 8: User Story 6 — Progress Summary Panel (Priority: P2)
+## Phase 8: User Story 6 — View Summary Panel (Priority: P2)
 
-**Goal**: Summary panel shows today's task count, completed count, and completion rate.
+**Goal**: User can see summary stats (Total tasks, Completed, Pending)
 
-**Independent Test**: Create 3 tasks for today → complete 1 → verify summary shows "1/3 (33%)".
+**Independent Test**: Add 3 tasks, complete 1. Summary should show: Total 3, Completed 1, Pending 2.
 
 ### Implementation
 
-- [ ] T024 [US6] Create `src/components/SummaryPanel.tsx`: compute today's total, completed, rate from task list
-- [ ] T025 [US6] Mount `SummaryPanel` in `App.tsx` above the task list; pass current task list as prop
+- [x] T023 [US6] Create `SummaryPanel.tsx` receiving tasks array
+- [x] T024 [US6] Calculate and display derived stats: Total, Completed, Pending
+- [x] T025 [US6] Add `SummaryPanel` to `App.tsx` main layout
 
-**Checkpoint**: Summary panel updates when tasks are completed
+**Checkpoint**: TC-011 passes
 
 ---
 
