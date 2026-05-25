@@ -6,9 +6,10 @@ interface TaskListProps {
   tasks: StudyTask[];
   onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
   onDeleteTask?: (id: string) => void;
+  onToggleTask?: (id: string) => void;
 }
 
-export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask, onDeleteTask }) => {
+export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask, onDeleteTask, onToggleTask }) => {
   if (tasks.length === 0) {
     return (
       <div className="empty-state" style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
@@ -20,7 +21,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask, onDelet
   return (
     <div className="task-list">
       {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} onUpdateTask={onUpdateTask} onDeleteTask={onDeleteTask} />
+        <TaskCard key={task.id} task={task} onUpdateTask={onUpdateTask} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} />
       ))}
     </div>
   );

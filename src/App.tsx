@@ -32,6 +32,14 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const handleToggleTask = (id: string) => {
+    const targetTask = tasks.find(t => t.id === id);
+    if (targetTask) {
+      const updatedTasks = updateTask(id, { isCompleted: !targetTask.isCompleted });
+      setTasks(updatedTasks);
+    }
+  };
+
   const filteredTasks = tasks.filter((task) => {
     switch (currentFilter) {
       case 'Today':
@@ -59,7 +67,12 @@ function App() {
           <h2>Task List Preview</h2>
           <FilterBar currentFilter={currentFilter} onFilterChange={setCurrentFilter} />
           
-          <TaskList tasks={filteredTasks} onUpdateTask={handleUpdateTask} onDeleteTask={handleDeleteTask} />
+          <TaskList 
+            tasks={filteredTasks} 
+            onUpdateTask={handleUpdateTask} 
+            onDeleteTask={handleDeleteTask} 
+            onToggleTask={handleToggleTask} 
+          />
         </div>
       </main>
     </div>
