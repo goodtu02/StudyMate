@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { StudyTask } from '../models/StudyTask';
+import { Button } from './ui/Button';
 
 interface TaskFormProps {
   onSave: (task: StudyTask) => void;
@@ -119,13 +120,13 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
           />
         </div>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button type="submit" className="save-button" style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}>
+          <Button type="submit" variant="primary">
             {initialData ? 'Update Task' : 'Save Task'}
-          </button>
+          </Button>
           {onCancel && (
-            <button type="button" onClick={onCancel} className="cancel-button" style={{ padding: '0.5rem 1rem', cursor: 'pointer', background: '#ccc', color: '#333', border: '1px solid #aaa', borderRadius: '4px' }}>
+            <Button type="button" onClick={onCancel} variant="cancel">
               Cancel
-            </button>
+            </Button>
           )}
         </div>
       </form>

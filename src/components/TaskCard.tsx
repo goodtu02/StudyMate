@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StudyTask } from '../models/StudyTask';
 import { TaskForm } from './TaskForm';
 import { ReflectionArea } from './ReflectionArea';
+import { Button } from './ui/Button';
 
 interface TaskCardProps {
   task: StudyTask;
@@ -66,22 +67,19 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
           }}>
             {task.isCompleted ? 'Done' : 'Pending'}
           </span>
-          <button 
-            onClick={() => setIsEditing(true)}
-            style={{ padding: '0.25rem 0.5rem', cursor: 'pointer', fontSize: '0.8rem', marginRight: '0.5rem' }}
-          >
+          <Button onClick={() => setIsEditing(true)} style={{ marginRight: '0.5rem' }}>
             Edit
-          </button>
-          <button 
+          </Button>
+          <Button 
+            variant="danger"
             onClick={() => {
               if (onDeleteTask && window.confirm('Are you sure you want to delete this task?')) {
                 onDeleteTask(task.id);
               }
             }}
-            style={{ padding: '0.25rem 0.5rem', cursor: 'pointer', fontSize: '0.8rem', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px' }}
           >
             Delete
-          </button>
+          </Button>
         </div>
       </div>
       <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#555' }}>
