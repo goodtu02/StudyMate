@@ -7,8 +7,8 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `.env.example` with `VITE_AI_API_KEY=your_key_here` (for optional real API)
-- [ ] T002 Verify `.env` is in `.gitignore` (add if missing)
+- [x] T001 Create `.env.example` with `VITE_AI_API_KEY=your_key_here` (for optional real API)
+- [x] T002 Verify `.env` is in `.gitignore` (add if missing)
 
 ---
 
