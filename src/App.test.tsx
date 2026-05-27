@@ -112,7 +112,7 @@ describe('StudyMate Integration Tests', () => {
     const aiButton = screen.getByRole('button', { name: /AI Suggestion/i });
     await userEvent.click(aiButton);
 
-    expect(aiButton).toHaveTextContent('Generating...');
+    expect(aiButton).toBeDisabled();
     
     await waitFor(() => {
       expect(screen.getByPlaceholderText(/What did you learn/i)).toHaveValue('Today I studied AI Task in general. I worked on the planned study.');

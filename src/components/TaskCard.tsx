@@ -16,7 +16,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
 
   if (isEditing) {
     return (
-      <div style={{ marginBottom: '1rem', border: '1px solid #007bff', padding: '1rem', borderRadius: '8px' }}>
+      <div className="task-item-card glass-card editing-card" style={{ border: '2px solid var(--primary)' }}>
         <TaskForm 
           initialData={task} 
           onSave={(updatedTask) => {
@@ -32,42 +32,34 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
   }
 
   return (
-    <div className={`task-card ${task.isCompleted ? 'completed' : ''}`} style={{
-      border: '1px solid #ccc',
-      borderRadius: '8px',
-      padding: '1rem',
-      marginBottom: '1rem',
-      backgroundColor: task.isCompleted ? '#f9f9f9' : '#fff',
-      opacity: task.isCompleted ? 0.6 : 1
-    }}>
-      <div className="task-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <input 
-            type="checkbox" 
-            checked={task.isCompleted} 
-            onChange={() => {
-              if (onToggleTask) {
-                onToggleTask(task.id);
-              }
-            }}
-            style={{ width: '1.2rem', height: '1.2rem', cursor: 'pointer' }}
-          />
-          <h3 style={{ margin: 0, textDecoration: task.isCompleted ? 'line-through' : 'none' }}>
+    <div className={`task-item-card glass-card ${task.isCompleted ? 'completed' : ''}`}>
+      <div className="task-card-header">
+        <div className="task-card-title-group">
+          <label className="checkbox-container">
+            <input 
+              type="checkbox" 
+              checked={task.isCompleted} 
+              onChange={() => {
+                if (onToggleTask) {
+                  onToggleTask(task.id);
+                }
+              }}
+            />
+            <span className="checkbox-checkmark">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </span>
+          </label>
+          <h3 className={`task-card-title ${task.isCompleted ? 'line-through' : ''}`}>
             {task.title}
           </h3>
         </div>
         <div className="task-card-actions">
-          <span className="status-badge" style={{
-            padding: '0.25rem 0.5rem',
-            borderRadius: '4px',
-            fontSize: '0.8rem',
-            backgroundColor: task.isCompleted ? '#d4edda' : '#fff3cd',
-            color: task.isCompleted ? '#155724' : '#856404',
-            marginRight: '0.5rem'
-          }}>
+          <span className={`tag-badge status ${task.isCompleted ? 'success' : 'pending'}`}>
             {task.isCompleted ? 'Done' : 'Pending'}
           </span>
-          <Button onClick={() => setIsEditing(true)} style={{ marginRight: '0.5rem' }}>
+          <Button onClick={() => setIsEditing(true)}>
             Edit
           </Button>
           <Button 
@@ -82,12 +74,48 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
           </Button>
         </div>
       </div>
-      <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#555' }}>
-        <strong>Date:</strong> {task.date}
+      
+      <div className="task-meta-row">
+        <div className="meta-item">
+          <svg 
+            stroke="currentColor" 
+            fill="none" 
+            strokeWidth="2" 
+            viewBox="0 0 24 24" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            height="14" 
+            width="14"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>{task.date}</span>
+        </div>
         {task.category && (
-          <span style={{ marginLeft: '1rem' }}>
-            <strong>Category:</strong> {task.category}
-          </span>
+          <div className="meta-item">
+            <span className="tag-badge category">{task.category}</span>
+          </div>
+        )}
+        {task.estimatedMinutes && (
+          <div className="meta-item">
+            <svg 
+              stroke="currentColor" 
+              fill="none" 
+              strokeWidth="2" 
+              viewBox="0 0 24 24" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              height="14" 
+              width="14"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>{task.estimatedMinutes} mins</span>
+          </div>
         )}
       </div>
       

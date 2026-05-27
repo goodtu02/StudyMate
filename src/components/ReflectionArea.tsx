@@ -34,44 +34,77 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
   };
 
   return (
-    <div className="reflection-area" style={{ marginTop: '1rem', borderTop: '1px dashed #ccc', paddingTop: '1rem' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-        <h4 style={{ margin: 0, fontSize: '0.95rem' }}>Study Reflection</h4>
+    <div className="reflection-section">
+      <div className="reflection-header-row">
+        <h4>Study Reflection</h4>
         <Button
           variant="ai"
           onClick={handleGenerate}
           disabled={isGenerating}
           title="Generates a suggested reflection based on your task details"
-          style={{ cursor: isGenerating ? 'not-allowed' : 'pointer', opacity: isGenerating ? 0.6 : 1 }}
         >
-          {isGenerating ? 'Generating...' : '??AI Suggestion'}
+          {isGenerating ? (
+            <span className="ai-loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          ) : (
+            <>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                height="14" 
+                width="14"
+                aria-hidden="true"
+              >
+                <path d="M12 2L14.7 9.3L22 12L14.7 14.7L12 22L9.3 14.7L2 12L9.3 9.3L12 2Z"></path>
+              </svg>
+              <span>AI Suggestion</span>
+            </>
+          )}
         </Button>
       </div>
-      {(!text && !isSaved) && <p style={{ fontSize: '0.85rem', color: '#888', margin: '0 0 0.5rem 0', fontStyle: 'italic' }}>No reflection written yet.</p>}
+      
+      {(!text && !isSaved) && (
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: '0 0 0.5rem 0', fontStyle: 'italic' }}>
+          No reflection written yet.
+        </p>
+      )}
+      
       <textarea
         value={text}
+        className="reflection-notebook-textarea"
         onChange={(e) => {
           setText(e.target.value);
           setIsSaved(false);
         }}
         placeholder="What did you learn? What was difficult? What will you do better next time?"
-        style={{ 
-          width: '100%', 
-          minHeight: '80px', 
-          padding: '0.5rem', 
-          borderRadius: '4px', 
-          border: '1px solid #ccc', 
-          marginBottom: '0.5rem', 
-          boxSizing: 'border-box',
-          fontFamily: 'inherit',
-          resize: 'vertical'
-        }}
       />
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      
+      <div className="reflection-footer">
         <Button variant="success" onClick={handleSave}>
           Save Reflection
         </Button>
-        {isSaved && <span style={{ color: '#28a745', fontSize: '0.85rem', fontWeight: 'bold' }}>??Reflection saved</span>}
+        {isSaved && (
+          <span className="reflection-save-status" style={{ color: 'var(--success)' }}>
+            <svg 
+              stroke="currentColor" 
+              fill="none" 
+              strokeWidth="3" 
+              viewBox="0 0 24 24" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              height="16" 
+              width="16"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Reflection saved</span>
+          </span>
+        )}
       </div>
     </div>
   );

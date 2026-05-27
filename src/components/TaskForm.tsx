@@ -62,64 +62,89 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
   };
 
   return (
-    <div className="task-form-container">
+    <div className="task-form-card glass-card">
       <h2>{initialData ? 'Edit Study Task' : 'Create Study Task'}</h2>
-      {error && <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
-      <form onSubmit={handleSubmit} className="task-form">
-        <div className="form-group" style={{ marginBottom: '1rem' }}>
-          <label htmlFor="title" style={{ display: 'block' }}>Title *</label>
+      
+      {error && (
+        <div className="error-banner" role="alert">
+          <svg 
+            stroke="currentColor" 
+            fill="none" 
+            strokeWidth="2" 
+            viewBox="0 0 24 24" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            height="18" 
+            width="18"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>{error}</span>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="task-form-grid">
+        <div className="form-group">
+          <label htmlFor="title">Title *</label>
           <input
             id="title"
             type="text"
+            className="form-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="E.g., Math Chapter 1"
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div className="form-group" style={{ marginBottom: '1rem' }}>
-          <label htmlFor="date" style={{ display: 'block' }}>Date *</label>
+        
+        <div className="form-group">
+          <label htmlFor="date">Date *</label>
           <input
             id="date"
             type="date"
+            className="form-input"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div className="form-group" style={{ marginBottom: '1rem' }}>
-          <label htmlFor="category" style={{ display: 'block' }}>Category</label>
+        
+        <div className="form-group">
+          <label htmlFor="category">Category</label>
           <input
             id="category"
             type="text"
+            className="form-input"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="E.g., Math"
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div className="form-group" style={{ marginBottom: '1rem' }}>
-          <label htmlFor="estimatedMinutes" style={{ display: 'block' }}>Estimated Time (minutes)</label>
+        
+        <div className="form-group">
+          <label htmlFor="estimatedMinutes">Estimated Time (minutes)</label>
           <input
             id="estimatedMinutes"
             type="number"
+            className="form-input"
             value={estimatedMinutes}
             onChange={(e) => setEstimatedMinutes(e.target.value ? parseInt(e.target.value, 10) : '')}
             min="1"
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div className="form-group" style={{ marginBottom: '1rem' }}>
-          <label htmlFor="memo" style={{ display: 'block' }}>Memo</label>
+        
+        <div className="form-group">
+          <label htmlFor="memo">Memo</label>
           <textarea
             id="memo"
+            className="form-textarea"
             value={memo}
             onChange={(e) => setMemo(e.target.value)}
             placeholder="Additional notes..."
-            style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
           <Button type="submit" variant="primary">
             {initialData ? 'Update Task' : 'Save Task'}
           </Button>

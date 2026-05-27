@@ -12,11 +12,29 @@ import { isToday } from './utils/dateUtils';
 function App() {
   const [tasks, setTasks] = useState<StudyTask[]>([]);
   const [currentFilter, setCurrentFilter] = useState<FilterType>('All');
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('studymate_theme');
+    if (saved) return saved === 'dark';
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const savedTasks = loadTasks();
     setTasks(savedTasks);
   }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('studymate_theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('studymate_theme', 'light');
+    }
+  }, [isDarkMode]);
 
   const handleSaveTask = (newTask: StudyTask) => {
     const updatedTasks = [...tasks, newTask];
@@ -56,30 +74,39 @@ function App() {
     }
   });
 
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
   return (
     <div className="App">
-      <Header />
-      <main>
-        <SummaryPanel tasks={tasks} />
+      <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
+      <main className="dashboard-layout">
+        <aside className="dashboard-sidebar">
+          <SummaryPanel tasks={tasks} />
+          <TaskForm onSave={handleSaveTask} />
+        </aside>
         
-        <TaskForm onSave={handleSaveTask} />
-        
-        <div className="task-list-preview" style={{ marginTop: '2rem' }}>
-          <h2>Task List Preview</h2>
-          <FilterBar currentFilter={currentFilter} onFilterChange={setCurrentFilter} />
-          
-          <TaskList 
-            tasks={filteredTasks} 
-            onUpdateTask={handleUpdateTask} 
-            onDeleteTask={handleDeleteTask} 
-            onToggleTask={handleToggleTask} 
-            emptyMessage={
-              tasks.length === 0 
-                ? 'No study tasks have been created yet. Add your first study plan for today.'
-                : `No tasks found for the "${currentFilter}" filter.`
-            }
-          />
-        </div>
+        <section className="dashboard-content">
+          <div className="task-list-section glass-card">
+            <div className="list-controls-row">
+              <h2>Study Schedule</h2>
+              <FilterBar currentFilter={currentFilter} onFilterChange={setCurrentFilter} />
+            </div>
+            
+            <TaskList 
+              tasks={filteredTasks} 
+              onUpdateTask={handleUpdateTask} 
+              onDeleteTask={handleDeleteTask} 
+              onToggleTask={handleToggleTask} 
+              emptyMessage={
+                tasks.length === 0 
+                  ? 'No study tasks have been created yet. Add your first study plan for today.'
+                  : `No tasks found for the "${currentFilter}" filter.`
+              }
+            />
+          </div>
+        </section>
       </main>
     </div>
   );
