@@ -17,16 +17,16 @@
 
 **⚠️ CRITICAL**: Run in the order listed; record Pass/Fail for each test case in `docs/04_test_plan.md`
 
-- [ ] T004 [US1] Run TC-001 (Create task with valid title + date → appears in list)
-- [ ] T005 [US1] Run TC-002 (Save with empty title → error message shown, not saved)
-- [ ] T006 [US2] Run TC-003 (Create task for today → appears in today's list)
-- [ ] T007 [US5] Run TC-004 (Click complete button → status changes)
-- [ ] T008 [US5] Run TC-005 (Refresh after completing → status persists)
-- [ ] T009 [US-REFLECT] Run TC-006 (Enter and save reflection → reflection displayed + persists)
-- [ ] T010 [US3] Run TC-007 (Edit task → updated values shown)
-- [ ] T011 [US4] Run TC-008 (Delete task → removed from list)
-- [ ] T012 [US1] Run TC-009 (Create task and refresh → task persists)
-- [ ] T013 [US-AI] Run TC-010 (Click AI suggestion button → suggestion displayed)
+- [x] T004 Run TC-001 (Create task valid)
+- [x] T005 Run TC-002 (Create task empty)
+- [x] T006 Run TC-003 (Today's task)
+- [x] T007 Run TC-004 (Complete task)
+- [x] T008 Run TC-005 (Refresh after complete)
+- [x] T009 Run TC-006 (Reflection)
+- [x] T010 Run TC-007 (Edit task)
+- [x] T011 Run TC-008 (Delete task)
+- [x] T012 Run TC-009 (Persistence)
+- [x] T013 Run TC-010 (AI suggestion)
 
 **Checkpoint**: All TC-001 through TC-010 results recorded in `docs/04_test_plan.md`
 
