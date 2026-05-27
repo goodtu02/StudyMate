@@ -46,8 +46,8 @@
 
 ### Implementation
 
-- [ ] T006 [US2] Ensure `ReflectionArea.tsx` textarea is always editable (no separate "edit mode" needed — textarea is the edit mode)
-- [ ] T007 [US2] Confirm `updateReflection` in `storage.ts` overwrites existing reflection correctly and updates `updatedAt`
+- [x] T006 [US2] Ensure `ReflectionArea.tsx` textarea is always editable (no separate "edit mode" needed — textarea is the edit mode)
+- [x] T007 [US2] Confirm `updateReflection` in `storage.ts` overwrites existing reflection correctly and updates `updatedAt`
 
 **Checkpoint**: Editing and re-saving a reflection works correctly
 
@@ -55,8 +55,8 @@
 
 ## Phase 5: Polish
 
-- [ ] T008 [P] Add visual indicator (e.g., pencil icon or "Reflection saved" confirmation) after saving
-- [ ] T009 Verify reflection is deleted when the parent task is deleted (data integrity check in `deleteTask`)
+- [x] T008 [P] Add visual indicator (e.g., pencil icon or "Reflection saved" confirmation) after saving
+- [x] T009 Verify reflection is deleted when the parent task is deleted (data integrity check in `deleteTask`)
 
 ---
 
