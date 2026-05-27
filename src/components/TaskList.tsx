@@ -13,7 +13,7 @@ interface TaskListProps {
 export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask, onDeleteTask, onToggleTask, emptyMessage }) => {
   if (tasks.length === 0) {
     return (
-      <div className="empty-state" style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
+      <div className="empty-state-card glass-card">
         <p>{emptyMessage || 'No study tasks have been created yet. Add your first study plan for today.'}</p>
       </div>
     );
