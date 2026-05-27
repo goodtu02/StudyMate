@@ -131,8 +131,8 @@
 - [x] T026 [P] Add responsive CSS for mobile layout (basic media queries)
 - [x] T027 [P] Add `src/components/Header.tsx` with app name and short description
 - [x] T028 Verify all empty-state messages are in place (FR-008)
-- [ ] T029 Test localStorage error handling manually (corrupt data → graceful reset)
-- [ ] T030 Run full manual test TC-001 through TC-009 and record results in `docs/04_test_plan.md`
+- [x] T029 Test localStorage error handling manually (corrupt data → graceful reset)
+- [x] T030 Run full manual test TC-001 through TC-009 and record results in `docs/04_test_plan.md`
 
 ---
 
