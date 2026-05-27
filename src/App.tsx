@@ -73,6 +73,11 @@ function App() {
             onUpdateTask={handleUpdateTask} 
             onDeleteTask={handleDeleteTask} 
             onToggleTask={handleToggleTask} 
+            emptyMessage={
+              tasks.length === 0 
+                ? 'No study tasks have been created yet. Add your first study plan for today.'
+                : `No tasks found for the "${currentFilter}" filter.`
+            }
           />
         </div>
       </main>
