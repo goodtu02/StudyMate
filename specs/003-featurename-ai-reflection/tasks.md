@@ -7,14 +7,14 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `.env.example` with `VITE_AI_API_KEY=your_key_here` (for optional real API)
-- [ ] T002 Verify `.env` is in `.gitignore` (add if missing)
+- [x] T001 Create `.env.example` with `VITE_AI_API_KEY=your_key_here` (for optional real API)
+- [x] T002 Verify `.env` is in `.gitignore` (add if missing)
 
 ---
 
 ## Phase 2: Foundational
 
-- [ ] T003 Create `src/services/aiSuggestion.ts`:
+- [x] T003 Create `src/services/aiSuggestion.ts`:
   - Export `generateSuggestion(task: StudyTask): string` function
   - Default: mock implementation using template string
     - Template: `"Today I studied [title] in [category]. [isCompleted ? 'I successfully completed' : 'I worked on'] the planned study. [memo ? 'Key points: ' + memo : '']"`
@@ -32,10 +32,10 @@
 
 ### Implementation
 
-- [ ] T004 [US1] Add "✨ AI Suggestion" button to `src/components/ReflectionArea.tsx`
-- [ ] T005 [US1] Wire button click to call `generateSuggestion(task)` and set the result as the textarea value
-- [ ] T006 [US1] Add loading state (button disabled + "Generating..." text) during async API call (even for mock, for consistency)
-- [ ] T007 [US1] If real API call fails, fall back to mock suggestion and log error to console
+- [x] T004 [US1] Add "✨ AI Suggestion" button to `src/components/ReflectionArea.tsx`
+- [x] T005 [US1] Wire button click to call `generateSuggestion(task)` and set the result as the textarea value
+- [x] T006 [US1] Add loading state (button disabled + "Generating..." text) during async API call (even for mock, for consistency)
+- [x] T007 [US1] If real API call fails, fall back to mock suggestion and log error to console
 
 **Checkpoint**: TC-010 passes — suggestion button works, suggestion can be edited and saved
 
@@ -43,8 +43,8 @@
 
 ## Phase 4: Polish
 
-- [ ] T008 [P] Add tooltip or help text near AI button: "Generates a suggested reflection based on your task details"
-- [ ] T009 Document AI suggestion implementation decision in `docs/agent_logs.md` (mock vs. real API, rationale)
+- [x] T008 [P] Add tooltip or help text near AI button: "Generates a suggested reflection based on your task details"
+- [x] T009 Document AI suggestion implementation decision in `docs/agent_logs.md` (mock vs. real API, rationale)
 
 ---
 

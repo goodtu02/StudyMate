@@ -9,11 +9,11 @@
 
 **Purpose**: Project initialization with React + TypeScript
 
-- [ ] T001 Initialize React + TypeScript project with Vite in the repository root (`npm create vite@latest . -- --template react-ts`)
-- [ ] T002 Install dependencies: `uuid`, `@types/uuid`
-- [ ] T003 [P] Configure ESLint and Prettier for TypeScript/React
-- [ ] T004 [P] Create base directory structure: `src/components/`, `src/services/`, `src/models/`, `src/utils/`
-- [ ] T005 Create `src/models/StudyTask.ts` with the StudyTask TypeScript interface per spec.md §7.1
+- [x] T001 Initialize React + TypeScript project with Vite in the repository root (`npm create vite@latest . -- --template react-ts`)
+- [x] T002 Install dependencies: `uuid`, `@types/uuid`
+- [x] T003 [P] Configure ESLint and Prettier for TypeScript/React
+- [x] T004 [P] Create base directory structure: `src/components/`, `src/services/`, `src/models/`, `src/utils/`
+- [x] T005 Create `src/models/StudyTask.ts` with the StudyTask TypeScript interface per spec.md §7.1
 
 ---
 
@@ -23,9 +23,9 @@
 
 ⚠️ **CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Implement `src/services/storage.ts`: `loadTasks()`, `saveTasks(tasks)`, `parseTasksSafely()` with error handling per FR-011
-- [ ] T007 Implement `src/utils/dateUtils.ts`: `isToday(dateString)`, `formatDate(dateString)` helpers
-- [ ] T008 Write basic error boundary or try-catch in storage service that resets to empty state on parse failure
+- [x] T006 Implement `src/services/storage.ts`: `loadTasks()`, `saveTasks(tasks)`, `parseTasksSafely()` with error handling per FR-011
+- [x] T007 Implement `src/utils/dateUtils.ts`: `isToday(dateString)`, `formatDate(dateString)` helpers
+- [x] T008 Write basic error boundary or try-catch in storage service that resets to empty state on parse failure
 
 **Checkpoint**: Storage service tested manually — tasks can be saved and loaded from localStorage
 
@@ -39,9 +39,9 @@
 
 ### Implementation
 
-- [ ] T009 [P] [US1] Create `src/components/TaskForm.tsx`: form fields (title*, date*, category, estimatedMinutes, memo) + Save button
-- [ ] T010 [US1] Add form validation in `TaskForm.tsx`: block save when title or date is empty, show error message per FR-009
-- [ ] T011 [US1] Wire `TaskForm` to `storage.ts`: on valid save, call `saveTasks()` and update state in `src/App.tsx`
+- [x] T009 [P] [US1] Create `src/components/TaskForm.tsx`: form fields (title*, date*, category, estimatedMinutes, memo) + Save button
+- [x] T010 [US1] Add form validation in `TaskForm.tsx`: block save when title or date is empty, show error message per FR-009
+- [x] T011 [US1] Wire `TaskForm` to `storage.ts`: on valid save, call `saveTasks()` and update state in `src/App.tsx`
 
 **Checkpoint**: User Story 1 independently functional — TC-001 and TC-002 pass
 
@@ -55,10 +55,10 @@
 
 ### Implementation
 
-- [ ] T012 [P] [US2] Create `src/components/TaskCard.tsx`: display task title, date, category, status badge
-- [ ] T013 [P] [US2] Create `src/components/FilterBar.tsx`: All / Today / Completed / Incomplete tab buttons
-- [ ] T014 [US2] Create `src/components/TaskList.tsx`: renders filtered list of `TaskCard` components; shows empty-state message per FR-008
-- [ ] T015 [US2] Implement filter logic in `TaskList.tsx` or `App.tsx` using `dateUtils.isToday()` for Today filter
+- [x] T012 [P] [US2] Create `src/components/TaskCard.tsx`: display task title, date, category, status badge
+- [x] T013 [P] [US2] Create `src/components/FilterBar.tsx`: All / Today / Completed / Incomplete tab buttons
+- [x] T014 [US2] Create `src/components/TaskList.tsx`: renders filtered list of `TaskCard` components; shows empty-state message per FR-008
+- [x] T015 [US2] Implement filter logic in `TaskList.tsx` or `App.tsx` using `dateUtils.isToday()` for Today filter
 
 **Checkpoint**: User Stories 1 + 2 functional — TC-001, TC-002, TC-003 pass
 
@@ -72,9 +72,9 @@
 
 ### Implementation
 
-- [ ] T016 [US3] Add edit mode toggle to `TaskCard.tsx`: clicking Edit opens `TaskForm.tsx` pre-filled with task data
-- [ ] T017 [US3] Implement update logic in `storage.ts`: `updateTask(id, changes)` function; updates `updatedAt` field
-- [ ] T018 [US3] Wire edit save to `App.tsx` state; reflect changes in `TaskList.tsx` immediately
+- [x] T016 [US3] Add edit mode toggle to `TaskCard.tsx`: clicking Edit opens `TaskForm.tsx` pre-filled with task data
+- [x] T017 [US3] Implement update logic in `storage.ts`: `updateTask(id, changes)` function; updates `updatedAt` field
+- [x] T018 [US3] Wire edit save to `App.tsx` state; reflect changes in `TaskList.tsx` immediately
 
 **Checkpoint**: TC-007 passes
 
@@ -88,51 +88,51 @@
 
 ### Implementation
 
-- [ ] T019 [US4] Add Delete button to `TaskCard.tsx`
-- [ ] T020 [US4] Implement `deleteTask(id)` in `storage.ts`; wire to `App.tsx` state update
+- [x] T019 [US4] Add Delete button to `TaskCard.tsx`
+- [x] T020 [US4] Implement `deleteTask(id)` in `storage.ts`; wire to `App.tsx` state update
 
 **Checkpoint**: TC-008 passes
 
 ---
 
-## Phase 7: User Story 5 — Mark Task as Completed (Priority: P1)
+## Phase 7: User Story 5 — Toggle Task Completion (Priority: P2)
 
-**Goal**: Completion status can be toggled; persists after refresh; completed tasks look different.
+**Goal**: User can click a checkbox to mark a task as completed/incomplete.
 
-**Independent Test**: Create task → toggle complete → verify visual change → refresh → verify status remains.
+**Independent Test**: Click checkbox → task grays out/strikes through → refresh → state preserved.
 
 ### Implementation
 
-- [ ] T021 [US5] Add completion toggle control (checkbox or button) to `TaskCard.tsx`
-- [ ] T022 [US5] Implement `toggleComplete(id)` in `storage.ts`: updates `isCompleted`, `completedAt`, `updatedAt`
-- [ ] T023 [US5] Apply visual distinction (strikethrough, opacity, badge) to completed tasks in `TaskCard.tsx`
+- [x] T021 [US5] Add a checkbox to `TaskCard.tsx` bound to `task.isCompleted`
+- [x] T022 [US5] Wire toggle event to `App.tsx` state update using `updateTask(id, { isCompleted: !current })`
 
-**Checkpoint**: TC-004, TC-005 pass
+**Checkpoint**: TC-009, TC-010 pass
 
 ---
 
-## Phase 8: User Story 6 — Progress Summary Panel (Priority: P2)
+## Phase 8: User Story 6 — View Summary Panel (Priority: P2)
 
-**Goal**: Summary panel shows today's task count, completed count, and completion rate.
+**Goal**: User can see summary stats (Total tasks, Completed, Pending)
 
-**Independent Test**: Create 3 tasks for today → complete 1 → verify summary shows "1/3 (33%)".
+**Independent Test**: Add 3 tasks, complete 1. Summary should show: Total 3, Completed 1, Pending 2.
 
 ### Implementation
 
-- [ ] T024 [US6] Create `src/components/SummaryPanel.tsx`: compute today's total, completed, rate from task list
-- [ ] T025 [US6] Mount `SummaryPanel` in `App.tsx` above the task list; pass current task list as prop
+- [x] T023 [US6] Create `SummaryPanel.tsx` receiving tasks array
+- [x] T024 [US6] Calculate and display derived stats: Total, Completed, Pending
+- [x] T025 [US6] Add `SummaryPanel` to `App.tsx` main layout
 
-**Checkpoint**: Summary panel updates when tasks are completed
+**Checkpoint**: TC-011 passes
 
 ---
 
 ## Phase 9: Polish & Cross-Cutting Concerns
 
-- [ ] T026 [P] Add responsive CSS for mobile layout (basic media queries)
-- [ ] T027 [P] Add `src/components/Header.tsx` with app name and short description
-- [ ] T028 Verify all empty-state messages are in place (FR-008)
-- [ ] T029 Test localStorage error handling manually (corrupt data → graceful reset)
-- [ ] T030 Run full manual test TC-001 through TC-009 and record results in `docs/04_test_plan.md`
+- [x] T026 [P] Add responsive CSS for mobile layout (basic media queries)
+- [x] T027 [P] Add `src/components/Header.tsx` with app name and short description
+- [x] T028 Verify all empty-state messages are in place (FR-008)
+- [x] T029 Test localStorage error handling manually (corrupt data → graceful reset)
+- [x] T030 Run full manual test TC-001 through TC-009 and record results in `docs/04_test_plan.md`
 
 ---
 

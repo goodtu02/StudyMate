@@ -1,0 +1,104 @@
+import React, { useState } from 'react';
+import { StudyTask } from '../models/StudyTask';
+import { TaskForm } from './TaskForm';
+import { ReflectionArea } from './ReflectionArea';
+import { Button } from './ui/Button';
+
+interface TaskCardProps {
+  task: StudyTask;
+  onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
+  onDeleteTask?: (id: string) => void;
+  onToggleTask?: (id: string) => void;
+}
+
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDeleteTask, onToggleTask }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
+  if (isEditing) {
+    return (
+      <div style={{ marginBottom: '1rem', border: '1px solid #007bff', padding: '1rem', borderRadius: '8px' }}>
+        <TaskForm 
+          initialData={task} 
+          onSave={(updatedTask) => {
+            if (onUpdateTask) {
+              onUpdateTask(task.id, updatedTask);
+            }
+            setIsEditing(false);
+          }} 
+          onCancel={() => setIsEditing(false)} 
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className={`task-card ${task.isCompleted ? 'completed' : ''}`} style={{
+      border: '1px solid #ccc',
+      borderRadius: '8px',
+      padding: '1rem',
+      marginBottom: '1rem',
+      backgroundColor: task.isCompleted ? '#f9f9f9' : '#fff',
+      opacity: task.isCompleted ? 0.6 : 1
+    }}>
+      <div className="task-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <input 
+            type="checkbox" 
+            checked={task.isCompleted} 
+            onChange={() => {
+              if (onToggleTask) {
+                onToggleTask(task.id);
+              }
+            }}
+            style={{ width: '1.2rem', height: '1.2rem', cursor: 'pointer' }}
+          />
+          <h3 style={{ margin: 0, textDecoration: task.isCompleted ? 'line-through' : 'none' }}>
+            {task.title}
+          </h3>
+        </div>
+        <div className="task-card-actions">
+          <span className="status-badge" style={{
+            padding: '0.25rem 0.5rem',
+            borderRadius: '4px',
+            fontSize: '0.8rem',
+            backgroundColor: task.isCompleted ? '#d4edda' : '#fff3cd',
+            color: task.isCompleted ? '#155724' : '#856404',
+            marginRight: '0.5rem'
+          }}>
+            {task.isCompleted ? 'Done' : 'Pending'}
+          </span>
+          <Button onClick={() => setIsEditing(true)} style={{ marginRight: '0.5rem' }}>
+            Edit
+          </Button>
+          <Button 
+            variant="danger"
+            onClick={() => {
+              if (onDeleteTask && window.confirm('Are you sure you want to delete this task?')) {
+                onDeleteTask(task.id);
+              }
+            }}
+          >
+            Delete
+          </Button>
+        </div>
+      </div>
+      <div style={{ marginTop: '0.5rem', fontSize: '0.9rem', color: '#555' }}>
+        <strong>Date:</strong> {task.date}
+        {task.category && (
+          <span style={{ marginLeft: '1rem' }}>
+            <strong>Category:</strong> {task.category}
+          </span>
+        )}
+      </div>
+      
+      <ReflectionArea 
+        task={task} 
+        onSave={(taskId, text) => {
+          if (onUpdateTask) {
+            onUpdateTask(taskId, { reflection: text });
+          }
+        }} 
+      />
+    </div>
+  );
+};
