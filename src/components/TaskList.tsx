@@ -7,13 +7,14 @@ interface TaskListProps {
   onUpdateTask?: (id: string, changes: Partial<StudyTask>) => void;
   onDeleteTask?: (id: string) => void;
   onToggleTask?: (id: string) => void;
+  emptyMessage?: string;
 }
 
-export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask, onDeleteTask, onToggleTask }) => {
+export const TaskList: React.FC<TaskListProps> = ({ tasks, onUpdateTask, onDeleteTask, onToggleTask, emptyMessage }) => {
   if (tasks.length === 0) {
     return (
       <div className="empty-state" style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
-        <p>No study tasks have been created yet. Add your first study plan for today.</p>
+        <p>{emptyMessage || 'No study tasks have been created yet. Add your first study plan for today.'}</p>
       </div>
     );
   }
