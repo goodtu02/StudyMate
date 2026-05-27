@@ -38,7 +38,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
       backgroundColor: task.isCompleted ? '#f9f9f9' : '#fff',
       opacity: task.isCompleted ? 0.6 : 1
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="task-card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <input 
             type="checkbox" 
@@ -54,7 +54,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
             {task.title}
           </h3>
         </div>
-        <div>
+        <div className="task-card-actions">
           <span className="status-badge" style={{
             padding: '0.25rem 0.5rem',
             borderRadius: '4px',

@@ -128,7 +128,7 @@
 
 ## Phase 9: Polish & Cross-Cutting Concerns
 
-- [ ] T026 [P] Add responsive CSS for mobile layout (basic media queries)
+- [x] T026 [P] Add responsive CSS for mobile layout (basic media queries)
 - [ ] T027 [P] Add `src/components/Header.tsx` with app name and short description
 - [ ] T028 Verify all empty-state messages are in place (FR-008)
 - [ ] T029 Test localStorage error handling manually (corrupt data → graceful reset)
