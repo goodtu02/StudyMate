@@ -1,5 +1,5 @@
 import React from 'react';
-import { StudyTask } from '../models/StudyTask';
+import type { StudyTask } from '../models/StudyTask';
 import { TaskCard } from './TaskCard';
 
 interface TaskListProps {

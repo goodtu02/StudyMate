@@ -1,4 +1,4 @@
-import { StudyTask } from '../models/StudyTask';
+import type { StudyTask } from '../models/StudyTask';
 
 /**
  * Generates an AI suggestion for the reflection based on the study task.

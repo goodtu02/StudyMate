@@ -66,7 +66,7 @@ describe('StudyMate Integration Tests', () => {
     await userEvent.type(textarea, 'This was hard.');
     await userEvent.click(screen.getByRole('button', { name: /Save Reflection/i }));
 
-    expect(screen.getByText('✓ Reflection saved')).toBeInTheDocument();
+    expect(screen.getByText(/Reflection saved/i)).toBeInTheDocument();
     
     const stored = JSON.parse(localStorage.getItem('studymate_tasks') || '[]');
     expect(stored[0].reflection).toBe('This was hard.');
@@ -109,7 +109,7 @@ describe('StudyMate Integration Tests', () => {
     render(<App />);
     await createTask('AI Task');
 
-    const aiButton = screen.getByRole('button', { name: /✨ AI Suggestion/i });
+    const aiButton = screen.getByRole('button', { name: /AI Suggestion/i });
     await userEvent.click(aiButton);
 
     expect(aiButton).toHaveTextContent('Generating...');

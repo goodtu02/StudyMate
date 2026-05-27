@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StudyTask } from '../models/StudyTask';
+import type { StudyTask } from '../models/StudyTask';
 import { TaskForm } from './TaskForm';
 import { ReflectionArea } from './ReflectionArea';
 import { Button } from './ui/Button';

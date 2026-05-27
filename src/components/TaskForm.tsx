@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { StudyTask } from '../models/StudyTask';
+import type { StudyTask } from '../models/StudyTask';
 import { Button } from './ui/Button';
 
 interface TaskFormProps {

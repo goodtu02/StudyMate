@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { Header } from './components/Header';
 import { TaskForm } from './components/TaskForm';
-import { FilterBar, FilterType } from './components/FilterBar';
+import { FilterBar, type FilterType } from './components/FilterBar';
 import { TaskList } from './components/TaskList';
 import { SummaryPanel } from './components/SummaryPanel';
-import { StudyTask } from './models/StudyTask';
+import type { StudyTask } from './models/StudyTask';
 import { loadTasks, saveTasks, updateTask, deleteTask } from './services/storage';
 import { isToday } from './utils/dateUtils';
 

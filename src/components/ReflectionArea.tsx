@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StudyTask } from '../models/StudyTask';
+import type { StudyTask } from '../models/StudyTask';
 import { generateSuggestion } from '../services/aiSuggestion';
 import { Button } from './ui/Button';
 
@@ -44,7 +44,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
           title="Generates a suggested reflection based on your task details"
           style={{ cursor: isGenerating ? 'not-allowed' : 'pointer', opacity: isGenerating ? 0.6 : 1 }}
         >
-          {isGenerating ? 'Generating...' : '✨ AI Suggestion'}
+          {isGenerating ? 'Generating...' : '??AI Suggestion'}
         </Button>
       </div>
       {(!text && !isSaved) && <p style={{ fontSize: '0.85rem', color: '#888', margin: '0 0 0.5rem 0', fontStyle: 'italic' }}>No reflection written yet.</p>}
@@ -71,7 +71,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
         <Button variant="success" onClick={handleSave}>
           Save Reflection
         </Button>
-        {isSaved && <span style={{ color: '#28a745', fontSize: '0.85rem', fontWeight: 'bold' }}>✓ Reflection saved</span>}
+        {isSaved && <span style={{ color: '#28a745', fontSize: '0.85rem', fontWeight: 'bold' }}>??Reflection saved</span>}
       </div>
     </div>
   );

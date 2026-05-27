@@ -1,4 +1,4 @@
-import { StudyTask } from '../models/StudyTask';
+import type { StudyTask } from '../models/StudyTask';
 
 const STORAGE_KEY = 'studymate_tasks';
 
