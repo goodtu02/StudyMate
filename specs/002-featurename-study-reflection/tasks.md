@@ -7,13 +7,13 @@
 
 ## Phase 1: Setup
 
-- [x] T001 Verify `src/models/StudyTask.ts` has `reflection: string` field (from Feature 001 — add if missing)
+- [ ] T001 Verify `src/models/StudyTask.ts` has `reflection: string` field (from Feature 001 — add if missing)
 
 ---
 
 ## Phase 2: Foundational
 
-- [x] T002 Add `updateReflection(taskId: string, text: string)` to `src/services/storage.ts`: updates `task.reflection` and `task.updatedAt`, then saves
+- [ ] T002 Add `updateReflection(taskId: string, text: string)` to `src/services/storage.ts`: updates `task.reflection` and `task.updatedAt`, then saves
 
 **Checkpoint**: Storage can save and load reflection text correctly
 
@@ -27,12 +27,12 @@
 
 ### Implementation
 
-- [x] T003 [US1] Create `src/components/ReflectionArea.tsx`:
+- [ ] T003 [US1] Create `src/components/ReflectionArea.tsx`:
   - Textarea for reflection input
   - Save button calling `updateReflection(taskId, text)`
   - Placeholder message "No reflection written yet." when reflection is empty (FR-006-5)
-- [x] T004 [US1] Mount `ReflectionArea` inside `TaskCard.tsx` (collapsible or always visible)
-- [x] T005 [US1] Initialize textarea value from `task.reflection` so existing reflection is pre-loaded
+- [ ] T004 [US1] Mount `ReflectionArea` inside `TaskCard.tsx` (collapsible or always visible)
+- [ ] T005 [US1] Initialize textarea value from `task.reflection` so existing reflection is pre-loaded
 
 **Checkpoint**: TC-006 passes — reflection saves and persists after refresh
 
@@ -46,8 +46,8 @@
 
 ### Implementation
 
-- [x] T006 [US2] Ensure `ReflectionArea.tsx` textarea is always editable (no separate "edit mode" needed — textarea is the edit mode)
-- [x] T007 [US2] Confirm `updateReflection` in `storage.ts` overwrites existing reflection correctly and updates `updatedAt`
+- [ ] T006 [US2] Ensure `ReflectionArea.tsx` textarea is always editable (no separate "edit mode" needed — textarea is the edit mode)
+- [ ] T007 [US2] Confirm `updateReflection` in `storage.ts` overwrites existing reflection correctly and updates `updatedAt`
 
 **Checkpoint**: Editing and re-saving a reflection works correctly
 
@@ -55,8 +55,8 @@
 
 ## Phase 5: Polish
 
-- [x] T008 [P] Add visual indicator (e.g., pencil icon or "Reflection saved" confirmation) after saving
-- [x] T009 Verify reflection is deleted when the parent task is deleted (data integrity check in `deleteTask`)
+- [ ] T008 [P] Add visual indicator (e.g., pencil icon or "Reflection saved" confirmation) after saving
+- [ ] T009 Verify reflection is deleted when the parent task is deleted (data integrity check in `deleteTask`)
 
 ---
 

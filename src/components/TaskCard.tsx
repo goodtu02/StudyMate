@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StudyTask } from '../models/StudyTask';
 import { TaskForm } from './TaskForm';
-import { ReflectionArea } from './ReflectionArea';
 
 interface TaskCardProps {
   task: StudyTask;
@@ -92,16 +91,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
           </span>
         )}
       </div>
-      
-      <ReflectionArea 
-        taskId={task.id} 
-        initialReflection={task.reflection} 
-        onSave={(taskId, text) => {
-          if (onUpdateTask) {
-            onUpdateTask(taskId, { reflection: text });
-          }
-        }} 
-      />
     </div>
   );
 };
