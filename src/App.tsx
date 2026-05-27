@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { Header } from './components/Header';
 import { TaskForm } from './components/TaskForm';
 import { FilterBar, FilterType } from './components/FilterBar';
 import { TaskList } from './components/TaskList';
@@ -57,10 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>StudyMate</h1>
-        <p>An AI-Assisted Personal Study Schedule and Reflection Web Application</p>
-      </header>
+      <Header />
       <main>
         <SummaryPanel tasks={tasks} />
         
