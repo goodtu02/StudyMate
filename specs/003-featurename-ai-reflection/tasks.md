@@ -32,10 +32,10 @@
 
 ### Implementation
 
-- [ ] T004 [US1] Add "✨ AI Suggestion" button to `src/components/ReflectionArea.tsx`
-- [ ] T005 [US1] Wire button click to call `generateSuggestion(task)` and set the result as the textarea value
-- [ ] T006 [US1] Add loading state (button disabled + "Generating..." text) during async API call (even for mock, for consistency)
-- [ ] T007 [US1] If real API call fails, fall back to mock suggestion and log error to console
+- [x] T004 [US1] Add "✨ AI Suggestion" button to `src/components/ReflectionArea.tsx`
+- [x] T005 [US1] Wire button click to call `generateSuggestion(task)` and set the result as the textarea value
+- [x] T006 [US1] Add loading state (button disabled + "Generating..." text) during async API call (even for mock, for consistency)
+- [x] T007 [US1] If real API call fails, fall back to mock suggestion and log error to console
 
 **Checkpoint**: TC-010 passes — suggestion button works, suggestion can be edited and saved
 
