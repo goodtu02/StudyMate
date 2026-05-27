@@ -9,7 +9,7 @@
 | TC-003 | Today’s task display   | Create task for today           | Task appears in today’s list                | ✅ Pass | Task appears under "Today" filter correctly |
 | TC-004 | Complete task          | Click complete button           | Task status changes to completed            | ✅ Pass | Checkbox toggles and status badge changes to "Done" |
 | TC-005 | Save completion status | Refresh after completing task   | Completed status remains                    | ✅ Pass | localStorage persists "isCompleted" state |
-| TC-006 | Write reflection       | Enter and save reflection       | Reflection is displayed and saved           | ⏳ N/A  | (Not implemented in Phase 1~9, planned for Phase 10) |
+| TC-006 | Write reflection       | Enter and save reflection       | Reflection is displayed and saved           | ✅ Pass | Reflection is stored in localStorage and persists on reload, UI indicator shows "Reflection saved" |
 | TC-007 | Edit task              | Edit an existing task           | Updated values are shown                    | ✅ Pass | Edit form opens, saves changes, and updates UI |
 | TC-008 | Delete task            | Click delete button             | Task is removed from list                   | ✅ Pass | Task is successfully removed after confirmation |
 | TC-009 | Data persistence       | Create task and refresh browser | Task remains                                | ✅ Pass | Task is reloaded correctly from localStorage |
