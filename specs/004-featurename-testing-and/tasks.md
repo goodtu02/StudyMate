@@ -55,15 +55,15 @@ Apply spec.md §13.2–§13.5 review criteria to each major code section:
 
 ---
 
-## Phase 5: Screenshots
+## Phase 5: Screenshots and Documentation
 
-- [ ] T023 Capture screenshot: app home page with task list (docs/screenshots/01_task_list.png)
-- [ ] T024 Capture screenshot: task creation form (docs/screenshots/02_task_form.png)
-- [ ] T025 Capture screenshot: today's tasks highlighted (docs/screenshots/03_today_tasks.png)
-- [ ] T026 Capture screenshot: completed task (docs/screenshots/04_completed_task.png)
-- [ ] T027 Capture screenshot: reflection area with saved text (docs/screenshots/05_reflection.png)
-- [ ] T028 Capture screenshot: AI suggestion in textarea (docs/screenshots/06_ai_suggestion.png)
-- [ ] T029 Update README to reference screenshots and document setup/run instructions
+- [x] T023 Launch application locally (`npm run dev`)
+- [x] T024 Capture `docs/screenshots/home_empty.png` (Empty list state)
+- [x] T025 Capture `docs/screenshots/create_task.png` (Filled form)
+- [x] T026 Capture `docs/screenshots/home_tasks.png` (List with tasks)
+- [x] T027 Capture `docs/screenshots/reflection.png` (Reflection UI)
+- [x] T028 Update `README.md` to include these screenshots (spec.md §13.6)
+- [x] T029 Create PR to merge Feature 004 into `dev`
 
 ---
 
