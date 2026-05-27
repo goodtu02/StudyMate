@@ -27,12 +27,12 @@
 
 ### Implementation
 
-- [ ] T003 [US1] Create `src/components/ReflectionArea.tsx`:
+- [x] T003 [US1] Create `src/components/ReflectionArea.tsx`:
   - Textarea for reflection input
   - Save button calling `updateReflection(taskId, text)`
   - Placeholder message "No reflection written yet." when reflection is empty (FR-006-5)
-- [ ] T004 [US1] Mount `ReflectionArea` inside `TaskCard.tsx` (collapsible or always visible)
-- [ ] T005 [US1] Initialize textarea value from `task.reflection` so existing reflection is pre-loaded
+- [x] T004 [US1] Mount `ReflectionArea` inside `TaskCard.tsx` (collapsible or always visible)
+- [x] T005 [US1] Initialize textarea value from `task.reflection` so existing reflection is pre-loaded
 
 **Checkpoint**: TC-006 passes — reflection saves and persists after refresh
 
