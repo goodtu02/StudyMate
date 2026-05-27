@@ -39,6 +39,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
         <button
           onClick={handleGenerate}
           disabled={isGenerating}
+          title="Generates a suggested reflection based on your task details"
           style={{
             padding: '0.2rem 0.6rem',
             fontSize: '0.8rem',

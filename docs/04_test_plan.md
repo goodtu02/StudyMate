@@ -13,7 +13,7 @@
 | TC-007 | Edit task              | Edit an existing task           | Updated values are shown                    | ✅ Pass | Edit form opens, saves changes, and updates UI |
 | TC-008 | Delete task            | Click delete button             | Task is removed from list                   | ✅ Pass | Task is successfully removed after confirmation |
 | TC-009 | Data persistence       | Create task and refresh browser | Task remains                                | ✅ Pass | Task is reloaded correctly from localStorage |
-| TC-010 | AI suggestion          | Click AI suggestion button      | Suggested sentence is displayed             | ⏳ N/A  | (Not implemented in Phase 1~9, planned for Phase 10) |
+| TC-010 | AI suggestion          | Click AI suggestion button      | Suggested sentence is displayed             | ✅ Pass | Loading state appears, then suggested text populates textarea |
 | TC-011 | Summary Panel updates  | Add/complete/delete tasks       | Total/Done/Pending stats update instantly   | ✅ Pass | Summary panel reflects exact count immediately |
 | TC-012 | Empty State display    | Filter tasks with no results    | Empty message displayed                     | ✅ Pass | Shows distinct message based on filter status |
 
