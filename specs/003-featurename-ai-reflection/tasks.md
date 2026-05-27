@@ -43,8 +43,8 @@
 
 ## Phase 4: Polish
 
-- [ ] T008 [P] Add tooltip or help text near AI button: "Generates a suggested reflection based on your task details"
-- [ ] T009 Document AI suggestion implementation decision in `docs/agent_logs.md` (mock vs. real API, rationale)
+- [x] T008 [P] Add tooltip or help text near AI button: "Generates a suggested reflection based on your task details"
+- [x] T009 Document AI suggestion implementation decision in `docs/agent_logs.md` (mock vs. real API, rationale)
 
 ---
 
