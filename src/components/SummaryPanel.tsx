@@ -9,29 +9,40 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ tasks }) => {
   const total = tasks.length;
   const completed = tasks.filter(task => task.isCompleted).length;
   const pending = total - completed;
+  const progressPercentage = total > 0 ? Math.round((completed / total) * 100) : 0;
 
   return (
-    <div className="summary-panel" style={{
-      display: 'flex',
-      justifyContent: 'space-around',
-      backgroundColor: '#f1f8ff',
-      border: '1px solid #cce5ff',
-      borderRadius: '8px',
-      padding: '1rem',
-      marginBottom: '1.5rem',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-    }}>
-      <div style={{ textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 0.5rem 0', color: '#004085' }}>Total</h3>
-        <p style={{ margin: 0, fontSize: '1.5rem', fontWeight: 'bold', color: '#0056b3' }}>{total}</p>
+    <div className="summary-card glass-card">
+      <div className="summary-grid">
+        <div className="summary-stat-box">
+          <span className="summary-stat-label">Total</span>
+          <span className="summary-stat-value">{total}</span>
+        </div>
+        <div className="summary-stat-box">
+          <span className="summary-stat-label">Completed</span>
+          <span className="summary-stat-value completed">{completed}</span>
+        </div>
+        <div className="summary-stat-box">
+          <span className="summary-stat-label">Pending</span>
+          <span className="summary-stat-value pending">{pending}</span>
+        </div>
       </div>
-      <div style={{ textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 0.5rem 0', color: '#155724' }}>Completed</h3>
-        <p style={{ margin: 0, fontSize: '1.5rem', fontWeight: 'bold', color: '#28a745' }}>{completed}</p>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <h3 style={{ margin: '0 0 0.5rem 0', color: '#856404' }}>Pending</h3>
-        <p style={{ margin: 0, fontSize: '1.5rem', fontWeight: 'bold', color: '#ffc107' }}>{pending}</p>
+      
+      <div className="summary-progress-wrapper">
+        <div className="summary-progress-info">
+          <span>Progress</span>
+          <span>{progressPercentage}%</span>
+        </div>
+        <div className="summary-progress-bar-bg">
+          <div 
+            className="summary-progress-bar-fill" 
+            style={{ width: `${progressPercentage}%` }}
+            role="progressbar"
+            aria-valuenow={progressPercentage}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          />
+        </div>
       </div>
     </div>
   );
