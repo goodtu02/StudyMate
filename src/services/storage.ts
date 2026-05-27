@@ -49,3 +49,7 @@ export const deleteTask = (id: string): StudyTask[] => {
   saveTasks(updatedTasks);
   return updatedTasks;
 };
+
+export const updateReflection = (taskId: string, text: string): StudyTask[] => {
+  return updateTask(taskId, { reflection: text });
+};
