@@ -14,7 +14,7 @@
 
 ## Phase 2: Foundational
 
-- [ ] T003 Create `src/services/aiSuggestion.ts`:
+- [x] T003 Create `src/services/aiSuggestion.ts`:
   - Export `generateSuggestion(task: StudyTask): string` function
   - Default: mock implementation using template string
     - Template: `"Today I studied [title] in [category]. [isCompleted ? 'I successfully completed' : 'I worked on'] the planned study. [memo ? 'Key points: ' + memo : '']"`
