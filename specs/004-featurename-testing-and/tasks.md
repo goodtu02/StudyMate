@@ -7,9 +7,9 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `docs/04_test_plan.md` with the TC-001–TC-010 table structure from spec.md §12.3 (Status column: Pass/Fail/Pending)
-- [ ] T002 Create `docs/05_quality_management.md` with sections: Code Quality Review, AI Output Review, Refactoring Log, Definition of Done Checklist
-- [ ] T003 [P] Create `docs/screenshots/` directory
+- [x] T001 Create `docs/04_test_plan.md` with the TC-001–TC-010 table structure from spec.md §12.3 (Status column: Pass/Fail/Pending)
+- [x] T002 Create `docs/05_quality_management.md` with sections: Code Quality Review, AI Output Review, Refactoring Log, Definition of Done Checklist
+- [x] T003 [P] Create `docs/screenshots/` directory
 
 ---
 
