@@ -94,8 +94,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
       </div>
       
       <ReflectionArea 
-        taskId={task.id} 
-        initialReflection={task.reflection} 
+        task={task} 
         onSave={(taskId, text) => {
           if (onUpdateTask) {
             onUpdateTask(taskId, { reflection: text });

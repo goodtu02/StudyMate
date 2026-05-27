@@ -1,24 +1,58 @@
 import React, { useState } from 'react';
+import { StudyTask } from '../models/StudyTask';
+import { generateSuggestion } from '../services/aiSuggestion';
 
 interface ReflectionAreaProps {
-  taskId: string;
-  initialReflection?: string;
+  task: StudyTask;
   onSave: (taskId: string, text: string) => void;
 }
 
-export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ taskId, initialReflection = '', onSave }) => {
-  const [text, setText] = useState(initialReflection);
+export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) => {
+  const [text, setText] = useState(task.reflection || '');
   const [isSaved, setIsSaved] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleSave = () => {
-    onSave(taskId, text);
+    onSave(task.id, text);
     setIsSaved(true);
     setTimeout(() => setIsSaved(false), 2000);
   };
 
+  const handleGenerate = async () => {
+    setIsGenerating(true);
+    try {
+      const suggestion = await generateSuggestion(task);
+      setText(suggestion);
+      setIsSaved(false);
+    } catch (error) {
+      console.error('Failed to generate AI suggestion. Falling back...', error);
+      setText(`Today I studied ${task.title}. (Fallback applied due to API error)`);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <div className="reflection-area" style={{ marginTop: '1rem', borderTop: '1px dashed #ccc', paddingTop: '1rem' }}>
-      <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.95rem' }}>Study Reflection</h4>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+        <h4 style={{ margin: 0, fontSize: '0.95rem' }}>Study Reflection</h4>
+        <button
+          onClick={handleGenerate}
+          disabled={isGenerating}
+          style={{
+            padding: '0.2rem 0.6rem',
+            fontSize: '0.8rem',
+            cursor: isGenerating ? 'not-allowed' : 'pointer',
+            backgroundColor: '#6f42c1',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            opacity: isGenerating ? 0.6 : 1
+          }}
+        >
+          {isGenerating ? 'Generating...' : '✨ AI Suggestion'}
+        </button>
+      </div>
       {(!text && !isSaved) && <p style={{ fontSize: '0.85rem', color: '#888', margin: '0 0 0.5rem 0', fontStyle: 'italic' }}>No reflection written yet.</p>}
       <textarea
         value={text}
