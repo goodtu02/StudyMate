@@ -34,9 +34,9 @@
 
 ## Phase 3: Bug Documentation and Fixing
 
-- [ ] T014 For each failed test case: create a GitHub Issue using the Bug Report format from spec.md §12.4
-- [ ] T015 Fix identified bugs (each fix in a separate commit referencing the Issue number)
-- [ ] T016 Re-run failed test cases after fixes and record retest results in `docs/04_test_plan.md`
+- [x] T014 [US-BUG] Create Issues for bugs (Skipped: No bugs found)
+- [x] T015 [US-BUG] Fix bugs (write failing test first) (Skipped: No bugs found)
+- [x] T016 [US-BUG] Re-run tests and record in 04_test_plan.md (Skipped: No bugs found)
 
 **Checkpoint**: All Must Have test cases (TC-001 through TC-009) pass
 
@@ -46,12 +46,12 @@
 
 Apply spec.md §13.2–§13.5 review criteria to each major code section:
 
-- [ ] T017 [P] Review `src/services/storage.ts` against AI Output Review criteria (spec.md §13.5)
-- [ ] T018 [P] Review `src/components/TaskForm.tsx` — check single responsibility, error handling
-- [ ] T019 [P] Review `src/components/TaskCard.tsx` — check state logic, visual distinction
-- [ ] T020 [P] Review `src/services/aiSuggestion.ts` — check fallback handling
-- [ ] T021 Extract any duplicated logic into utility functions (commit under `refactor/quality-pass` branch)
-- [ ] T022 Record review findings in `docs/05_quality_management.md` (accepted / modified / rejected per §9.4)
+- [x] T017 Review `src/services/storage.ts` for FR-QUAL-003 compliance (Error Handling)
+- [x] T018 Review `src/components/TaskForm.tsx` for FR-QUAL-002 (DRY principles)
+- [x] T019 Review `src/components/TaskCard.tsx` for FR-QUAL-002 (DRY principles)
+- [x] T020 Review `src/services/aiSuggestion.ts` for FR-QUAL-001 (Security)
+- [x] T021 [US-REF] Extract duplicated logic (e.g. form fields, date formatting) into reusable utilities or components (with TDD)
+- [x] T022 Record findings and refactoring results in `docs/05_quality_management.md` (accepted / modified / rejected per §9.4)
 
 ---
 
