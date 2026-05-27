@@ -20,6 +20,18 @@ function App() {
     }
     return false;
   });
+  const [greeting, setGreeting] = useState<string>('');
+
+  useEffect(() => {
+    const hours = new Date().getHours();
+    if (hours >= 5 && hours < 12) {
+      setGreeting('좋은 아침입니다! 오늘도 활기찬 학습을 시작해볼까요? ☀️');
+    } else if (hours >= 12 && hours < 18) {
+      setGreeting('안녕하세요! 오늘 계획한 학습 목표를 향해 나아가봅시다 📚');
+    } else {
+      setGreeting('오늘 하루도 수고 많으셨습니다! 차분하게 오늘의 공부를 돌아볼까요? 🌙');
+    }
+  }, []);
 
   useEffect(() => {
     const savedTasks = loadTasks();
@@ -88,6 +100,12 @@ function App() {
         </aside>
         
         <section className="dashboard-content">
+          {greeting && (
+            <div className="welcome-banner glass-card animate-fade-in">
+              <p>{greeting}</p>
+            </div>
+          )}
+          
           <div className="task-list-section glass-card">
             <div className="list-controls-row">
               <h2>Study Schedule</h2>
