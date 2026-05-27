@@ -68,10 +68,12 @@ Apply spec.md §13.2–§13.5 review criteria to each major code section:
 ---
 
 ## Phase 6: Final Verification
-
-- [ ] T030 Confirm Definition of Done (spec.md §13.6) is met for all merged features
-- [ ] T031 Verify all GitHub Issues, PRs, and Discussions are in order per spec.md §11
-- [ ] T032 Commit final `docs/04_test_plan.md` and `docs/05_quality_management.md`
+- [x] T030 Confirm Definition of Done:
+  - All tests passing
+  - No pending changes
+  - Documentation and PRs up-to-date
+- [x] T031 Verify all GitHub Issues, PRs, and Discussions are in order
+- [x] T032 Commit final `docs/04_test_plan.md` and `docs/05_quality_management.md`
 
 ---
 
