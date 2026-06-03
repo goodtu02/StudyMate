@@ -57,12 +57,12 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
         </div>
         <div className="task-card-actions">
           <span className={`tag-badge status ${task.isCompleted ? 'success' : 'pending'}`}>
-            {task.isCompleted ? 'Done' : 'Pending'}
+            {task.isCompleted ? '완료' : '미완료'}
           </span>
           <Button 
             onClick={() => setIsEditing(true)}
-            aria-label="Edit task"
-            title="Edit task"
+            aria-label="태스크 수정"
+            title="태스크 수정"
           >
             <svg 
               stroke="currentColor" 
@@ -78,17 +78,17 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
               <path d="M12 20h9"></path>
               <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
             </svg>
-            <span>Edit</span>
+            <span>수정</span>
           </Button>
           <Button 
             variant="danger"
             onClick={() => {
-              if (onDeleteTask && window.confirm('Are you sure you want to delete this task?')) {
+              if (onDeleteTask && window.confirm('이 태스크를 삭제하시겠습니까?')) {
                 onDeleteTask(task.id);
               }
             }}
-            aria-label="Delete task"
-            title="Delete task"
+            aria-label="태스크 삭제"
+            title="태스크 삭제"
           >
             <svg 
               stroke="currentColor" 
@@ -106,7 +106,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
               <line x1="10" y1="11" x2="10" y2="17"></line>
               <line x1="14" y1="11" x2="14" y2="17"></line>
             </svg>
-            <span>Delete</span>
+            <span>삭제</span>
           </Button>
         </div>
       </div>
@@ -150,7 +150,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdateTask, onDelete
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            <span>{task.estimatedMinutes} mins</span>
+            <span>{task.estimatedMinutes}분</span>
           </div>
         )}
       </div>

@@ -67,7 +67,11 @@ function App() {
   const handleToggleTask = (id: string) => {
     const targetTask = tasks.find(t => t.id === id);
     if (targetTask) {
-      const updatedTasks = updateTask(id, { isCompleted: !targetTask.isCompleted });
+      const newCompleted = !targetTask.isCompleted;
+      const updatedTasks = updateTask(id, { 
+        isCompleted: newCompleted,
+        completedAt: newCompleted ? new Date().toISOString() : undefined
+      });
       setTasks(updatedTasks);
     }
   };
@@ -108,7 +112,7 @@ function App() {
           
           <div className="task-list-section glass-card">
             <div className="list-controls-row">
-              <h2>Study Schedule</h2>
+              <h2>학습 일정</h2>
               <FilterBar currentFilter={currentFilter} onFilterChange={setCurrentFilter} />
             </div>
             
@@ -119,8 +123,8 @@ function App() {
               onToggleTask={handleToggleTask} 
               emptyMessage={
                 tasks.length === 0 
-                  ? 'No study tasks have been created yet. Add your first study plan for today.'
-                  : `No tasks found for the "${currentFilter}" filter.`
+                  ? '아직 학습 태스크가 없습니다. 첫 번째 학습 계획을 추가해보세요!'
+                  : `"${currentFilter}" 필터에 해당하는 태스크가 없습니다.`
               }
             />
           </div>
