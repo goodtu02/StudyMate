@@ -7,6 +7,13 @@ interface FilterBarProps {
   onFilterChange: (filter: FilterType) => void;
 }
 
+const filterLabels: Record<FilterType, string> = {
+  All: '전체',
+  Today: '오늘',
+  Completed: '완료',
+  Incomplete: '미완료',
+};
+
 export const FilterBar: React.FC<FilterBarProps> = ({ currentFilter, onFilterChange }) => {
   const filters: FilterType[] = ['All', 'Today', 'Completed', 'Incomplete'];
 
@@ -19,7 +26,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({ currentFilter, onFilterCha
           onClick={() => onFilterChange(filter)}
           className={`filter-tab-btn ${currentFilter === filter ? 'active' : ''}`}
         >
-          {filter}
+          {filterLabels[filter]}
         </button>
       ))}
     </div>

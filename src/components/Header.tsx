@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ isDarkMode, onToggleTheme }) => 
             <path d="M12 2L14.7 9.3L22 12L14.7 14.7L12 22L9.3 14.7L2 12L9.3 9.3L12 2Z"></path>
           </svg>
         </h1>
-        <p>An AI-Assisted Personal Study Schedule and Reflection Web Application</p>
+        <p>AI 기반 개인 학습 일정 관리 & 회고 웹 앱</p>
       </div>
       <div className="header-actions">
         <button 
