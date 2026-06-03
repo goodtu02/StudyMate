@@ -27,7 +27,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
       setIsSaved(false);
     } catch (error) {
       console.error('Failed to generate AI suggestion. Falling back...', error);
-      setText(`Today I studied ${task.title}. (Fallback applied due to API error)`);
+      setText(`오늘 ${task.title} 학습을 진행했습니다. (API 오류로 기본 응답이 적용되었습니다)`);
     } finally {
       setIsGenerating(false);
     }
@@ -36,12 +36,12 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
   return (
     <div className="reflection-section">
       <div className="reflection-header-row">
-        <h4>Study Reflection</h4>
+        <h4>학습 회고</h4>
         <Button
           variant="ai"
           onClick={handleGenerate}
           disabled={isGenerating}
-          title="Generates a suggested reflection based on your task details"
+          title="태스크 정보를 기반으로 회고 제안을 생성합니다"
         >
           {isGenerating ? (
             <span className="ai-loading-dots">
@@ -62,7 +62,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
               >
                 <path d="M12 2L14.7 9.3L22 12L14.7 14.7L12 22L9.3 14.7L2 12L9.3 9.3L12 2Z"></path>
               </svg>
-              <span>AI Suggestion</span>
+              <span>AI 제안</span>
             </>
           )}
         </Button>
@@ -70,7 +70,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
       
       {(!text && !isSaved) && (
         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: '0 0 0.5rem 0', fontStyle: 'italic' }}>
-          No reflection written yet.
+          아직 작성된 회고가 없습니다.
         </p>
       )}
       
@@ -81,12 +81,12 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
           setText(e.target.value);
           setIsSaved(false);
         }}
-        placeholder="What did you learn? What was difficult? What will you do better next time?"
+        placeholder="무엇을 배웠나요? 어려웠던 점은? 다음에 개선할 점은?"
       />
       
       <div className="reflection-footer">
         <Button variant="success" onClick={handleSave}>
-          Save Reflection
+          회고 저장
         </Button>
         {isSaved && (
           <span className="reflection-save-status" style={{ color: 'var(--success)' }}>
@@ -102,7 +102,7 @@ export const ReflectionArea: React.FC<ReflectionAreaProps> = ({ task, onSave }) 
             >
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Reflection saved</span>
+            <span>회고가 저장되었습니다</span>
           </span>
         )}
       </div>

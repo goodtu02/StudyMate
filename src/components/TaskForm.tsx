@@ -32,7 +32,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
     setError(null);
 
     if (!title.trim() || !date.trim()) {
-      setError('Please enter both a study title and a study date.');
+      setError('학습 제목과 날짜를 모두 입력해주세요.');
       return;
     }
 
@@ -63,7 +63,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
 
   return (
     <div className="task-form-card glass-card">
-      <h2>{initialData ? 'Edit Study Task' : 'Create Study Task'}</h2>
+      <h2>{initialData ? '학습 태스크 수정' : '학습 태스크 만들기'}</h2>
       
       {error && (
         <div className="error-banner" role="alert">
@@ -87,19 +87,19 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
 
       <form onSubmit={handleSubmit} className="task-form-grid">
         <div className="form-group">
-          <label htmlFor="title">Title *</label>
+          <label htmlFor="title">제목 *</label>
           <input
             id="title"
             type="text"
             className="form-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="E.g., Math Chapter 1"
+            placeholder="예: 수학 1단원 복습"
           />
         </div>
         
         <div className="form-group">
-          <label htmlFor="date">Date *</label>
+          <label htmlFor="date">날짜 *</label>
           <input
             id="date"
             type="date"
@@ -110,19 +110,19 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
         </div>
         
         <div className="form-group">
-          <label htmlFor="category">Category</label>
+          <label htmlFor="category">카테고리</label>
           <input
             id="category"
             type="text"
             className="form-input"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            placeholder="E.g., Math"
+            placeholder="예: 수학"
           />
         </div>
         
         <div className="form-group">
-          <label htmlFor="estimatedMinutes">Estimated Time (minutes)</label>
+          <label htmlFor="estimatedMinutes">예상 학습 시간 (분)</label>
           <input
             id="estimatedMinutes"
             type="number"
@@ -134,23 +134,23 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSave, initialData, onCance
         </div>
         
         <div className="form-group">
-          <label htmlFor="memo">Memo</label>
+          <label htmlFor="memo">메모</label>
           <textarea
             id="memo"
             className="form-textarea"
             value={memo}
             onChange={(e) => setMemo(e.target.value)}
-            placeholder="Additional notes..."
+            placeholder="추가 메모를 입력하세요..."
           />
         </div>
         
         <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
           <Button type="submit" variant="primary">
-            {initialData ? 'Update Task' : 'Save Task'}
+            {initialData ? '태스크 수정' : '태스크 저장'}
           </Button>
           {onCancel && (
             <Button type="button" onClick={onCancel} variant="cancel">
-              Cancel
+              취소
             </Button>
           )}
         </div>

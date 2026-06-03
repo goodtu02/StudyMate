@@ -49,6 +49,10 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-ui: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, Consolas, monospace;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
 }
 
 /* Dark Theme Variables */

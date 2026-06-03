@@ -13,9 +13,9 @@ describe('StudyMate Integration Tests', () => {
   });
 
   const createTask = async (title: string, date: string = '2026-05-27') => {
-    await userEvent.type(screen.getByLabelText(/Title \*/i), title);
-    await userEvent.type(screen.getByLabelText(/Date \*/i), date);
-    await userEvent.click(screen.getByRole('button', { name: /Save Task/i }));
+    await userEvent.type(screen.getByLabelText(/제목 \*/i), title);
+    await userEvent.type(screen.getByLabelText(/날짜 \*/i), date);
+    await userEvent.click(screen.getByRole('button', { name: /태스크 저장/i }));
   };
 
   it('TC-001: Create task - valid', async () => {
@@ -26,11 +26,11 @@ describe('StudyMate Integration Tests', () => {
 
   it('TC-002: Empty title validation', async () => {
     render(<App />);
-    const saveButton = screen.getByRole('button', { name: /Save Task/i });
+    const saveButton = screen.getByRole('button', { name: /태스크 저장/i });
 
     // No title typed, just save
     await userEvent.click(saveButton);
-    expect(screen.getByText('Please enter both a study title and a study date.')).toBeInTheDocument();
+    expect(screen.getByText('학습 제목과 날짜를 모두 입력해주세요.')).toBeInTheDocument();
   });
 
   it('TC-003: Today\'s task display', async () => {
@@ -38,7 +38,7 @@ describe('StudyMate Integration Tests', () => {
     const today = new Date().toISOString().split('T')[0];
     await createTask('Today Task', today);
 
-    await userEvent.click(screen.getByRole('button', { name: /^Today$/i }));
+    await userEvent.click(screen.getByRole('button', { name: /^오늘$/i }));
     expect(screen.getByText('Today Task')).toBeInTheDocument();
   });
 
@@ -62,11 +62,11 @@ describe('StudyMate Integration Tests', () => {
     render(<App />);
     await createTask('Reflection Task');
 
-    const textarea = screen.getByPlaceholderText(/What did you learn/i);
+    const textarea = screen.getByPlaceholderText(/무엇을 배웠나요/i);
     await userEvent.type(textarea, 'This was hard.');
-    await userEvent.click(screen.getByRole('button', { name: /Save Reflection/i }));
+    await userEvent.click(screen.getByRole('button', { name: /회고 저장/i }));
 
-    expect(screen.getByText(/Reflection saved/i)).toBeInTheDocument();
+    expect(screen.getByText(/회고가 저장되었습니다/i)).toBeInTheDocument();
     
     const stored = JSON.parse(localStorage.getItem('studymate_tasks') || '[]');
     expect(stored[0].reflection).toBe('This was hard.');
@@ -76,7 +76,7 @@ describe('StudyMate Integration Tests', () => {
     render(<App />);
     await createTask('Edit Me');
 
-    await userEvent.click(screen.getByRole('button', { name: /Edit/i }));
+    await userEvent.click(screen.getByRole('button', { name: /수정/i }));
     
     // Find the edit input (it has the value 'Edit Me')
     const editInputs = screen.getAllByDisplayValue('Edit Me');
@@ -85,7 +85,7 @@ describe('StudyMate Integration Tests', () => {
     await userEvent.clear(editField);
     await userEvent.type(editField, 'Edited Task');
     // Save button inside the task card
-    await userEvent.click(screen.getByRole('button', { name: /Update Task/i }));
+    await userEvent.click(screen.getByRole('button', { name: /태스크 수정/i }));
 
     expect(screen.getByText('Edited Task')).toBeInTheDocument();
     expect(screen.queryByText('Edit Me')).not.toBeInTheDocument();
@@ -98,7 +98,7 @@ describe('StudyMate Integration Tests', () => {
 
     expect(screen.getByText('Delete Me')).toBeInTheDocument();
 
-    await userEvent.click(screen.getByRole('button', { name: /Delete/i }));
+    await userEvent.click(screen.getByRole('button', { name: /삭제/i }));
     
     expect(confirmSpy).toHaveBeenCalled();
     expect(screen.queryByText('Delete Me')).not.toBeInTheDocument();
@@ -109,13 +109,13 @@ describe('StudyMate Integration Tests', () => {
     render(<App />);
     await createTask('AI Task');
 
-    const aiButton = screen.getByRole('button', { name: /AI Suggestion/i });
+    const aiButton = screen.getByRole('button', { name: /AI 제안/i });
     await userEvent.click(aiButton);
 
     expect(aiButton).toBeDisabled();
     
     await waitFor(() => {
-      expect(screen.getByPlaceholderText(/What did you learn/i)).toHaveValue('Today I studied AI Task in general. I worked on the planned study.');
+      expect(screen.getByPlaceholderText(/무엇을 배웠나요/i)).toHaveValue('오늘 일반 과목의 "AI Task" 학습을 진행했습니다. 아직 진행 중인 학습입니다. 내일도 꾸준히 이어가 봅시다!');
     }, { timeout: 2000 });
   });
 });

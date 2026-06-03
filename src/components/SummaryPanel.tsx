@@ -35,7 +35,7 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ tasks }) => {
             </svg>
           </div>
           <div className="stat-info">
-            <span className="summary-stat-label">Total</span>
+            <span className="summary-stat-label">전체</span>
             <span className="summary-stat-value">{total}</span>
           </div>
         </div>
@@ -58,7 +58,7 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ tasks }) => {
             </svg>
           </div>
           <div className="stat-info">
-            <span className="summary-stat-label">Completed</span>
+            <span className="summary-stat-label">완료</span>
             <span className="summary-stat-value completed">{completed}</span>
           </div>
         </div>
@@ -81,7 +81,7 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ tasks }) => {
             </svg>
           </div>
           <div className="stat-info">
-            <span className="summary-stat-label">Pending</span>
+            <span className="summary-stat-label">미완료</span>
             <span className="summary-stat-value pending">{pending}</span>
           </div>
         </div>
@@ -89,7 +89,7 @@ export const SummaryPanel: React.FC<SummaryPanelProps> = ({ tasks }) => {
       
       <div className="summary-progress-wrapper">
         <div className="summary-progress-info">
-          <span>Progress</span>
+          <span>진행률</span>
           <span>{progressPercentage}%</span>
         </div>
         <div className="summary-progress-bar-bg">
